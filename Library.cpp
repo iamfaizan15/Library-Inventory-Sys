@@ -64,7 +64,7 @@ int main()
                 if(_inventory.FindBookByTitle(title,foundBook))
                 {
                         if(!foundBook.CheckedOut){
-                        cout << "Book Already Checked in " << endl;
+                        cout << "Book Already Checked Out" << endl;
                         break;
                     }
                     _inventory.CheckOutBook(foundBook);
@@ -84,7 +84,7 @@ int main()
                 if(_inventory.FindBookByTitle(title,foundBook && foundBook.CheckedOut))
                 {
                     if(!foundBook.CheckedOut){
-                        cout << "Book Already Checked in " << endl;
+                        cout << "Book Already Checked out" << endl;
                         break;
                     }
                     _inventory.CheckInBook(foundBook);
