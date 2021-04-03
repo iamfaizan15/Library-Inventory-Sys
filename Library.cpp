@@ -43,18 +43,56 @@ int main()
                 int id = _inventory.Books.size() + 1;
 
                 Book newBook(id, title, author);
-
                 _inventory.AddBook(newBook);
                 break;
             }
             case 2:
-                
+                cout <<"\nID\tTitle\tAuthor" << endl;
+                for(int i = 0; i < _inventory.Books.size(); i++)
+                {
+                    cout << _inventory.Books[i].ID << "\t" <<  _inventory.Books[i].Title << "\t" <<  _inventory.Books[i].Author << endl;
+                }
+                cout << endl;
                 break;
 
             case 3:
+            {
+                cout << "Enter a book title to check out: " << endl;
+                string title;
+                getline (cin, title);
+                Book foundBook;
+                if(_inventory.FindBookByTitle(title,foundBook))
+                {
+                        if(!foundBook.CheckedOut){
+                        cout << "Book Already Checked in " << endl;
+                        break;
+                    }
+                    _inventory.CheckOutBook(foundBook);
+                    cout << "Book checked out " << endl;
+                }
+                else { 
+                    cout << "Book not found!" << endl;
+                }
                 break;
-
+            }
             case 4:
+            {
+                cout << "Enter a book title to check in: ";
+                string title;
+                getline (cin, title);
+                Book foundBook;
+                if(_inventory.FindBookByTitle(title,foundBook && foundBook.CheckedOut))
+                {
+                    if(!foundBook.CheckedOut){
+                        cout << "Book Already Checked in " << endl;
+                        break;
+                    }
+                    _inventory.CheckInBook(foundBook);
+                    cout << "Book checked in " << endl;
+                }
+                else { 
+                    cout << "Book not found!" << endl;
+                }
                 break;
                 
             default:
@@ -62,7 +100,6 @@ int main()
             break;    
         }
     
-        
     }
     
 }
